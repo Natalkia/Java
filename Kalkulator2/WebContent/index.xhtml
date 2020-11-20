@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+	<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<p:panel header="Kalkulator">
+
+			<p:messages id="msg" />
+	<h:form id="bla">
+
+	<h:panelGrid id="grid" columns="3" cellpadding="5">
+	<p:outputLabel for="kwota" value="Kwota:" />
+        <p:inputText id="kwota" value="#{kredytBB.kwota}" 
+        required="true" requiredMessage="Proszę podać kwotę"
+        converterMessage="Proszę podać kwotę w postaci liczby"
+        validatorMessage="Proszę podać kwotę większą od 0">
+        <f:validateLongRange minimum="0"/>
+        </p:inputText>
+    	<p:message for="kwota" />
+		<h:outputLabel for="oprocentowanie" value="Oprocentowanie:" />
+    	<p:inputText id="oprocentowanie" value="#{kredytBB.oprocentowanie}" 
+		requiered="true" requieredMessage="Proszę podać oprocentowanie" 
+		converterMessage="Proszę podać oprocentowanie w postaci liczby"
+        validatorMessage="Proszę podać oprocentowanie większe od 0">
+        <f:validateLongRange minimum="0"/>
+		</p:inputText>
+		<p:messages id="oprocentowanie"/>
+		<p:messages id="msg" />
+		
+  		<p:commandButton value="Oblicz" action="#{kredytBB.calc()}" update="@form"/>
+		<br />
+		<br />
+		</h:panelGrid>	
+	</h:form>
+</p:panel>
+
+	</ui:define>
+
+</ui:composition>
+
+	
